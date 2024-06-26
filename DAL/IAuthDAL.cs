@@ -1,7 +1,7 @@
 ﻿using System;
 using Resunet.DAL.Models;
 
-namespace Resunet.DAL.Auth
+namespace Resunet.DAL
 {
     public interface IAuthDAL
     {
@@ -10,3 +10,4 @@ namespace Resunet.DAL.Auth
         Task<int> CreateUser(UserModel model);
     }
 }
+

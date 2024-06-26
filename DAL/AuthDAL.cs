@@ -3,7 +3,7 @@ using Dapper;
 using Npgsql;
 using Resunet.DAL.Models;
 
-namespace Resunet.DAL.Auth
+namespace Resunet.DAL
 {
     public class AuthDAL : IAuthDAL
     {
@@ -12,9 +12,10 @@ namespace Resunet.DAL.Auth
             using (var connection = new NpgsqlConnection(DbHelper.ConnString))
             {
                 connection.Open();
+
                 return await connection.QueryFirstOrDefaultAsync<UserModel>(@"
-                        select UserId, Email, Password, Salt, Status 
-                        from AppUser 
+                        select UserId, Email, Password, Salt, Status
+                        from AppUser
                         where Email = @email", new { email = email }) ?? new UserModel();
             }
         }
@@ -26,9 +27,9 @@ namespace Resunet.DAL.Auth
                 connection.Open();
 
                 return await connection.QueryFirstOrDefaultAsync<UserModel>(@"
-                        select UserId, Email, Password, Salt, Status 
-                        from AppUser 
-                        where UserId = @id", new {id = id}) ?? new UserModel();
+                        select UserId, Email, Password, Salt, Status
+                        from AppUser
+                        where UserId = @id", new { id = id }) ?? new UserModel();
             }
         }
 
@@ -38,9 +39,11 @@ namespace Resunet.DAL.Auth
             {
                 connection.Open();
                 string sql = @"insert into AppUser(Email, Password, Salt, Status)
-                    values(@Email, @Password, @Salt, @Status)";
-                return await connection.ExecuteAsync(sql,model);
+                        values(@Email, @Password, @Salt, @Status);
+                        SELECT currval(pg_get_serial_sequence('AppUser','userid'));";
+                return await connection.QuerySingleAsync<int>(sql, model);
             }
         }
     }
 }
+

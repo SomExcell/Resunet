@@ -10,7 +10,7 @@ namespace Resunet.DAL.Models
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
         public string Salt { get; set; } = null!;
-        public int? Status { get; set; } = 0;
-
+        public int Status { get; set; } = 0;
     }
 }
+
