@@ -7,11 +7,11 @@ namespace Resunet.DAL
 {
     public class AuthDAL : IAuthDAL
     {
-        public async Task<UserModel> GetUser(string email)
+        public async Task<UserModel> GetUserAsync(string email)
         {
             using (var connection = new NpgsqlConnection(DbHelper.ConnString))
             {
-                connection.Open();
+                await connection.OpenAsync();
 
                 return await connection.QueryFirstOrDefaultAsync<UserModel>(@"
                         select UserId, Email, Password, Salt, Status
@@ -20,11 +20,11 @@ namespace Resunet.DAL
             }
         }
 
-        public async Task<UserModel> GetUser(int id)
+        public async Task<UserModel> GetUserAsync(int id)
         {
             using (var connection = new NpgsqlConnection(DbHelper.ConnString))
             {
-                connection.Open();
+                await connection.OpenAsync();
 
                 return await connection.QueryFirstOrDefaultAsync<UserModel>(@"
                         select UserId, Email, Password, Salt, Status
@@ -33,11 +33,12 @@ namespace Resunet.DAL
             }
         }
 
-        public async Task<int> CreateUser(UserModel model)
+        public async Task<int> CreateUserAsync(UserModel model)
         {
             using (var connection = new NpgsqlConnection(DbHelper.ConnString))
             {
-                connection.Open();
+                await connection.OpenAsync();
+
                 string sql = @"insert into AppUser(Email, Password, Salt, Status)
                         values(@Email, @Password, @Salt, @Status);
                         SELECT currval(pg_get_serial_sequence('AppUser','userid'));";
