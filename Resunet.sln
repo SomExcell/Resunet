@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resunet", "Resunet.csproj", "{833DBE3C-C486-44D7-AB25-09ED090B1925}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resunet", "Resunet.csproj", "{833DBE3C-C486-44D7-AB25-09ED090B1925}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResunetTests", "..\ResunetTests\ResunetTests.csproj", "{77C00996-FD65-42A6-A86D-85FD1C51EB3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{833DBE3C-C486-44D7-AB25-09ED090B1925}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{833DBE3C-C486-44D7-AB25-09ED090B1925}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{833DBE3C-C486-44D7-AB25-09ED090B1925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77C00996-FD65-42A6-A86D-85FD1C51EB3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77C00996-FD65-42A6-A86D-85FD1C51EB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77C00996-FD65-42A6-A86D-85FD1C51EB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77C00996-FD65-42A6-A86D-85FD1C51EB3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
